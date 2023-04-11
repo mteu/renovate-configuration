@@ -1,0 +1,11 @@
+{
+    "name": "mteu/renovate-configuration",
+    "description": "A personal configuration reposoritory for Renovate",
+    "authors": [
+        {
+            "name": "Martin Adler",
+            "email": "mteu@mailbox.org"
+        }
+    ],
+    "require": {}
+}
