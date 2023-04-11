@@ -1,6 +1,6 @@
 <div align="center">
 
-# Renovate config
+# Renovate configuration
 
 [![CGL](https://github.com/mteu/renovate-configuration/actions/workflows/ci.yaml/badge.svg)](https://github.com/mteu/renovate-configuration/actions/workflows/ci.yaml)
 [![Release](https://github.com/mteu/renovate-configuration/actions/workflows/release.yaml/badge.svg)](https://github.com/mteu/renovate-configuration/actions/workflows/release.yaml)
