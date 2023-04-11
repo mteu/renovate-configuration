@@ -1,0 +1,74 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    ":autodetectRangeStrategy",
+    ":automergeMinor",
+    ":automergeRequireAllStatusChecks",
+    ":combinePatchMinorReleases",
+    ":enableVulnerabilityAlertsWithLabel(security)",
+    ":ignoreModulesAndTests",
+    ":label(dependencies)",
+    ":prConcurrentLimit10",
+    ":prHourlyLimit2",
+    ":rebaseStalePrs",
+    ":semanticCommitsDisabled",
+    ":separateMajorReleases",
+    ":widenPeerDependencies",
+    "group:recommended"
+  ],
+  "assignAutomerge": true,
+  "baseBranches": [
+    "main"
+  ],
+  "commitBodyTable": true,
+  "commitMessagePrefix": "[TASK]",
+  "commitMessageTopic": "{{depName}}",
+  "configMigration": true,
+  "ignoreUnstable": false,
+  "labels": [
+    "dependencies"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "extends": [
+      "schedule:daily"
+    ],
+    "commitMessageAction": "Update composer.lock",
+    "recreateClosed": true
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "automerge": true
+    },
+    {
+      "matchDepTypes": [
+        "require"
+      ],
+      "rangeStrategy": "widen"
+    },
+    {
+      "matchPackageNames": [
+        "php"
+      ],
+      "allowedVersions": "~8.1",
+      "extends": [
+        ":automergeDisabled"
+      ],
+    }
+  ],
+  "platformAutomerge": true,
+  "rangeStrategy": "update-lockfile",
+  "separateMinorPatch": true,
+  "timezone": "Europe/Berlin",
+  "vulnerabilityAlerts": {
+    "extends": [
+      ":automergeDisabled",
+      ":automergePr"
+    ],
+    "rangeStrategy": "replace"
+  }
+}
