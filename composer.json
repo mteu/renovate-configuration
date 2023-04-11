@@ -31,6 +31,6 @@
         ],
         "lint:composer": "@lint:composer:fix --dry-run",
         "lint:editorconfig": "ec",
-        "validate-config": "docker-compose -f qa/docker-compose.yaml run --rm validate"
+        "validate-config": "docker-compose run --rm validate"
     }
 }
