@@ -1,11 +1,36 @@
 {
     "name": "mteu/renovate-configuration",
-    "description": "A personal configuration reposoritory for Renovate",
+    "description": "A personal configuration repository for Renovate",
+    "license": "GPL-3.0-or-later",
+    "type": "configuration",
     "authors": [
         {
             "name": "Martin Adler",
             "email": "mteu@mailbox.org"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "armin/editorconfig-cli": "^1.5",
+        "ergebnis/composer-normalize": "^2.30"
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        }
+    },
+    "scripts": {
+        "fix": [
+            "@fix:composer",
+            "@fix:editorconfig"
+        ],
+        "fix:composer": "@composer normalize",
+        "fix:editorconfig": "@lint:editorconfig --fix",
+        "lint": [
+            "@lint:composer",
+            "@lint:editorconfig"
+        ],
+        "lint:composer": "@lint:composer:fix --dry-run",
+        "lint:editorconfig": "ec",
+        "validate-config": "docker-compose -f qa/docker-compose.yaml run --rm validate"
+    }
 }
