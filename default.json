@@ -37,28 +37,21 @@
     "recreateClosed": true
   },
   "packageRules": [
-    {
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "automerge": true
-    },
-    {
-      "matchDepTypes": [
-        "require"
-      ],
-      "rangeStrategy": "widen"
-    },
-    {
-      "matchPackageNames": [
-        "php"
-      ],
-      "allowedVersions": "~8.1",
-      "extends": [
-        ":automergeDisabled"
-      ],
-    }
+	  {
+		  "matchDepTypes": [
+			  "require"
+		  ],
+		  "rangeStrategy": "widen"
+	  },
+	  {
+		  "extends": [
+			  ":automergeDisabled"
+		  ],
+		  "ignoreUnstable": false,
+		  "matchPackageNames": [
+			  "php"
+		  ]
+	  }
   ],
   "platformAutomerge": true,
   "rangeStrategy": "update-lockfile",
