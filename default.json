@@ -1,66 +1,86 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    ":autodetectRangeStrategy",
-    ":automergeMinor",
-    ":automergeRequireAllStatusChecks",
-    ":combinePatchMinorReleases",
-    ":enableVulnerabilityAlertsWithLabel(security)",
-    ":ignoreModulesAndTests",
-    ":label(dependencies)",
-    ":prConcurrentLimit10",
-    ":prHourlyLimit2",
-    ":rebaseStalePrs",
-    ":semanticCommitsDisabled",
-    ":separateMajorReleases",
-    ":widenPeerDependencies",
-    "group:recommended"
-  ],
-  "assignAutomerge": true,
-  "baseBranches": [
-    "main"
-  ],
-  "commitBodyTable": true,
-  "commitMessagePrefix": "[TASK]",
-  "commitMessageTopic": "{{depName}}",
-  "configMigration": true,
-  "ignoreUnstable": false,
-  "labels": [
-    "dependencies"
-  ],
-  "lockFileMaintenance": {
+"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+"extends": [
+	":autodetectRangeStrategy",
+	":automergeMinor",
+	":automergeRequireAllStatusChecks",
+	":combinePatchMinorReleases",
+	":enableVulnerabilityAlertsWithLabel(security)",
+	":ignoreModulesAndTests",
+	":label(dependencies)",
+	":prConcurrentLimit10",
+	":prHourlyLimit2",
+	":rebaseStalePrs",
+	":semanticCommitsDisabled",
+	":separateMajorReleases",
+	":widenPeerDependencies",
+	"group:recommended"
+],
+"assignAutomerge": true,
+"baseBranches": [
+	"main"
+],
+"commitBodyTable": true,
+"commitMessagePrefix": "[TASK]",
+"commitMessageTopic": "{{depName}}",
+"configMigration": true,
+"ignoreUnstable": false,
+"labels": [
+	"dependencies"
+],
+"lockFileMaintenance": {
 	"automerge": true,
-    "enabled": true,
-    "commitMessageAction": "Update composer.lock",
-    "recreateClosed": true
-  },
-  "packageRules": [
-	  {
-		  "matchUpdateTypes": [
-			  "minor",
-			  "patch"
-		  ],
-		  "automerge": true
-	  },
-	  {
-		  "extends": [
-			  ":automergeDisabled"
-		  ],
-		  "ignoreUnstable": false,
-		  "matchPackageNames": [
-			  "php"
-		  ]
-	  }
-  ],
-  "platformAutomerge": true,
-  "rangeStrategy": "update-lockfile",
-  "separateMinorPatch": true,
-  "timezone": "Europe/Berlin",
-  "vulnerabilityAlerts": {
-    "extends": [
-      ":automergeDisabled",
-      ":automergePr"
-    ],
-    "rangeStrategy": "replace"
-  }
+	"automergeType": "pr",
+	"commitMessageAction": "Update composer.lock",
+	"enabled": true,
+	"platformAutomerge": true,
+	"recreateClosed": true
+},
+"packageRules": [
+	{
+		"description": "Automatically merge minor and patch-level updates",
+		"automerge": true,
+		"automergeType": "pr",
+		"matchUpdateTypes": [
+			"minor",
+			"patch"
+		]
+	},
+	{
+		"description": "Automatically merge minor and patch-level updates by-passing PRs",
+		"automerge": true,
+		"automergeType": "branch",
+		"groupName": "devDependencies",
+		"groupSlug": "dev-dependencies",
+		"matchDepTypes": [
+			"devDependencies"
+		],
+		"matchUpdateTypes": [
+			"patch",
+			"minor"
+		],
+		"matchCurrentVersion": "!/^0/"
+	},
+	{
+		"description": "Do not touch PHP!",
+		"extends": [
+			":automergeDisabled"
+		],
+		"ignoreUnstable": false,
+		"matchPackageNames": [
+			"php"
+		]
+	}
+],
+"platformAutomerge": true,
+"rangeStrategy": "update-lockfile",
+"separateMinorPatch": true,
+"timezone": "Europe/Berlin",
+"vulnerabilityAlerts": {
+	"extends": [
+		":automergeDisabled",
+		":automergePr"
+	],
+	"rangeStrategy": "replace"
+	}
 }
