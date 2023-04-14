@@ -29,19 +29,18 @@
     "dependencies"
   ],
   "lockFileMaintenance": {
+	"automerge": true,
     "enabled": true,
-    "extends": [
-      "schedule:daily"
-    ],
     "commitMessageAction": "Update composer.lock",
     "recreateClosed": true
   },
   "packageRules": [
 	  {
-		  "matchDepTypes": [
-			  "require"
+		  "matchUpdateTypes": [
+			  "minor",
+			  "patch"
 		  ],
-		  "rangeStrategy": "widen"
+		  "automerge": true
 	  },
 	  {
 		  "extends": [
