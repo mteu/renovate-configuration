@@ -76,6 +76,7 @@
 "rangeStrategy": "update-lockfile",
 "separateMinorPatch": true,
 "timezone": "Europe/Berlin",
+"updateNotScheduled": true,
 "vulnerabilityAlerts": {
 	"extends": [
 		":automergeDisabled",
