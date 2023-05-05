@@ -8,7 +8,7 @@
 	":enableVulnerabilityAlertsWithLabel(security)",
 	":ignoreModulesAndTests",
 	":label(dependencies)",
-	":prConcurrentLimit10",
+	":prHourlyLimitNone",
 	":rebaseStalePrs",
 	":semanticCommitsDisabled",
 	":separateMajorReleases",
