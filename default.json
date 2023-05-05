@@ -8,8 +8,7 @@
 	":enableVulnerabilityAlertsWithLabel(security)",
 	":ignoreModulesAndTests",
 	":label(dependencies)",
-	":prConcurrentLimit10",
-	":prHourlyLimit2",
+	":prHourlyLimitNone",
 	":rebaseStalePrs",
 	":semanticCommitsDisabled",
 	":separateMajorReleases",
@@ -73,9 +72,11 @@
 	}
 ],
 "platformAutomerge": true,
+"prCreation": "immediate",
 "rangeStrategy": "update-lockfile",
 "separateMinorPatch": true,
 "timezone": "Europe/Berlin",
+"updateNotScheduled": true,
 "vulnerabilityAlerts": {
 	"extends": [
 		":automergeDisabled",
