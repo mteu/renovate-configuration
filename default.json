@@ -23,7 +23,7 @@
 "commitMessagePrefix": "[TASK]",
 "commitMessageTopic": "{{depName}}",
 "configMigration": true,
-"ignoreUnstable": false,
+"ignoreUnstable": true,
 "labels": [
 	"dependencies"
 ],
