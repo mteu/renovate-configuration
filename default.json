@@ -46,27 +46,29 @@
 		]
 	},
 	{
-		"description": "Keep GitHub Actions pinned to commit SHAs and auto-merge patch updates",
+        "description": "Automatically merge minor and patch-level updates by-passing PRs",
+        "automerge": true,
+        "automergeType": "branch",
+        "groupName": "devDependencies",
+        "groupSlug": "dev-dependencies",
+        "matchDepTypes": ["devDependencies"],
+        "matchUpdateTypes": ["patch", "minor"],
+        "matchCurrentVersion": "!/^0/"
+    },
+	{
+		"description": "Keep GitHub Actions pinned to commit SHAs and auto-merge non-major updates",
 		"matchManagers": ["github-actions"],
 		"pinDigests": true,
 		"automerge": true,
 		"automergeType": "pr",
-		"minimumReleaseAge": "3 days"
+		"minimumReleaseAge": "3 days",
+		"matchUpdateTypes": ["digest", "patch", "minor"]
 	},
 	{
-		"description": "Automatically merge minor and patch-level updates by-passing PRs",
-		"automerge": true,
-		"automergeType": "branch",
-		"groupName": "devDependencies",
-		"groupSlug": "dev-dependencies",
-		"matchDepTypes": [
-			"devDependencies"
-		],
-		"matchUpdateTypes": [
-			"patch",
-			"minor"
-		],
-		"matchCurrentVersion": "!/^0/"
+		"description": "Never auto-merge major GitHub Actions updates",
+		"matchManagers": ["github-actions"],
+		"matchUpdateTypes": ["major"],
+		"automerge": false
 	},
 	{
 		"description": "Do not touch PHP!",
