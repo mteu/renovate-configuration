@@ -13,6 +13,7 @@
 		":semanticCommitsDisabled",
 		":separateMajorReleases",
 		":widenPeerDependencies",
+		"helpers:pinGitHubActionDigests",
 		"group:recommended"
 	],
 	"assignAutomerge": true,
